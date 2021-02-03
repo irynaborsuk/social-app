@@ -12,6 +12,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import { useHistory } from 'react-router';
 import { ExitToApp, Home } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -216,6 +217,10 @@ const HeaderAppBar = () => {
 				<Badge color="secondary"><NotificationsIcon /></Badge>
 				<div className={classes.menuTag}>Notifications</div>
 			</MenuItem>
+			<MenuItem onClick={() => {history.push('/poststatistics')}}>
+				<Badge color="secondary"><DashboardIcon /></Badge>
+				<div className={classes.menuTag}>Statistics</div>
+			</MenuItem>
 			<MenuItem
 				onClick={() => {
 					history.push('/login');
@@ -268,6 +273,11 @@ const HeaderAppBar = () => {
 							<Badge color="secondary">
 								<NotificationsIcon />
 							</Badge>
+						</IconButton>
+						<IconButton
+							onClick={() => {history.push('./poststatistics')}}
+							color="inherit">
+							<DashboardIcon />
 						</IconButton>
 						<IconButton
 							className={classes.userIconButton}

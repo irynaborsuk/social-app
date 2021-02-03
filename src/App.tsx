@@ -9,6 +9,8 @@ import Registration from './components/containers/Registration';
 import Header from './components/UI/Header';
 import Home from './components/containers/Home';
 import Profile from './components/containers/Profile';
+import StatisticsProvider from './providers/statistics.provider';
+import PostStatistic from './components/containers/PostStatistic';
 import { useAxiosInterceptors } from './hooks/axios';
 
 function App() {
@@ -20,8 +22,13 @@ function App() {
 
 			<Fragment>
 				<Header/>
-				<Route path="/" exact><Home/></Route>
-				<Route path="/profile"><Profile/></Route>
+				<StatisticsProvider>
+					<>
+						<Route path="/" exact><Home/></Route>
+						<Route path="/profile"><Profile/></Route>
+						<Route path="/poststatistics"><PostStatistic/></Route>
+					</>
+				</StatisticsProvider>
 			</Fragment>
 		</Switch>
 	);

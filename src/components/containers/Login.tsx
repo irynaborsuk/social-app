@@ -12,7 +12,6 @@ import {
 	IconButton,
 	Input,
 	InputAdornment,
-	SnackbarOrigin
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
@@ -35,10 +34,6 @@ const useStyles = makeStyles(() => createStyles({
 	marginTop: '50px',
 	}
 }));
-
-export interface State extends SnackbarOrigin {
-	open: boolean;
-}
 
 const Login = () => {
 	const dispatch = useDispatch();
