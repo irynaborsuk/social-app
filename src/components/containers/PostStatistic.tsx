@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AgGridColumn, AgGridReact } from 'ag-grid-react';
+import { AgGridReact } from 'ag-grid-react';
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
@@ -15,6 +15,25 @@ const gridDateFormatter = ({ value }: { value: string }) => {
 	const seconds = ('0' + date.getSeconds().toString()).slice(-2);
 	return `${day}-${month}-${year} at ${hours}:${minutes}:${seconds}`;
 };
+
+const columnDefs = [
+	{
+		headerName: 'Participant', sortable: true, filter: true,
+		children: [
+			{ headerName: 'User Name', field: 'userName', sortable: true, filter: true, checkboxSelection: true},
+		]
+	},
+	{
+		headerName: 'Post Statistics', sortable: true, filter: true,
+		children: [
+			{ headerName: 'Posts Count', field: 'postsCount', sortable: true, filter: true, columnGroupShow: 'closed'},
+			{ headerName: 'Comments Count', field: 'commentsCount', sortable: true, filter: true, columnGroupShow: 'open'},
+			{ headerName: 'Content Symbols Count', field: 'contentSymbolsCount', sortable: true, filter: true, columnGroupShow: 'open'},
+			{ headerName: 'Last Updated', field: 'lastUpdated', sortable: true, filter: true, columnGroupShow: 'open', valueFormatter: gridDateFormatter},
+			{ headerName: 'Last Created', field: 'lastCreated', sortable: true, filter: true, columnGroupShow: 'open', valueFormatter: gridDateFormatter},
+		]
+	},
+]
 
 const PostStatistic = () => {
 	const statistics = useStatistics();
@@ -32,26 +51,10 @@ const PostStatistic = () => {
 			<div className="ag-theme-alpine" style={{ height: 400, width: 'auto' }}>
 				<AgGridReact
 					rowData={statistics}
+					columnDefs={columnDefs}
 					rowSelection="multiple"
 					animateRows>
-					<AgGridColumn field={'participant'} sortable={true} filter={true}>
-						<AgGridColumn field={'userName'} sortable={true} filter={true} checkboxSelection={true}/>
-					</AgGridColumn>
-					<AgGridColumn field={'postStatistics'} sortable={true} filter={true}>
-						<AgGridColumn field={'postsCount'} sortable={true} filter={true}/>
-						<AgGridColumn field={'commentsCount'} sortable={true} filter={true}/>
-						<AgGridColumn field={'contentSymbolsCount'} sortable={true} filter={true}/>
-						<AgGridColumn
-							field={'lastUpdated'}
-							sortable={true}
-							filter={true}
-							valueFormatter={gridDateFormatter}/>
-						<AgGridColumn
-							field={'lastCreated'}
-							sortable={true}
-							filter={true}
-							valueFormatter={gridDateFormatter}/>
-					</AgGridColumn>
+
 				</AgGridReact>
 			</div>
 		</div>

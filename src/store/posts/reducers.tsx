@@ -37,7 +37,7 @@ export const selectSortedPosts = ({ posts: state }: RootState) => {
 	}
 
 	const allPosts: Post[] = state.posts;
-		const parentPosts: Post[] = allPosts.filter((post: Post) => !( !!post.parent));
+	const parentPosts: Post[] = allPosts.filter((post: Post) => !( !!post.parent));
 	const commentPosts: Post[] = allPosts.filter((post: Post) => !!post.parent);
 
 	const filteredPosts: Post[] = parentPosts.map((parent: Post) => {

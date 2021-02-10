@@ -217,7 +217,7 @@ const HeaderAppBar = () => {
 				<Badge color="secondary"><NotificationsIcon /></Badge>
 				<div className={classes.menuTag}>Notifications</div>
 			</MenuItem>
-			<MenuItem onClick={() => {history.push('/poststatistics')}}>
+			<MenuItem onClick={() => {history.push('/posts-statistics')}}>
 				<Badge color="secondary"><DashboardIcon /></Badge>
 				<div className={classes.menuTag}>Statistics</div>
 			</MenuItem>
@@ -275,7 +275,7 @@ const HeaderAppBar = () => {
 							</Badge>
 						</IconButton>
 						<IconButton
-							onClick={() => {history.push('./poststatistics')}}
+							onClick={() => {history.push('./posts-statistics')}}
 							color="inherit">
 							<DashboardIcon />
 						</IconButton>
